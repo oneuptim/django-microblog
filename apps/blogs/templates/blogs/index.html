@@ -15,7 +15,17 @@
         {% for blog in blogs %}
           <h3>{{ blog.title }}</h3>
           <p>{{ blog.blog }}</p>
-          <h6>{{ created_at.blog }}</h6>
+          <!-- <h6>{{ created_at.blog }}</h6> -->
+          {% for comment in blog.comment_set.all %}
+            {{ comment.comment }}
+          {% endfor %}
+          <form class="comments" action="/comments/{{ blog.id }}" method="post">
+            {% csrf_token %}
+            <textarea name="comment" placeholder="Leave a commet here..."></textarea>
+            <input type="submit" name="" value="Post Comment">
+          </form>
+
+
         {% endfor %}
       </div>
       <div class="new_blog">
