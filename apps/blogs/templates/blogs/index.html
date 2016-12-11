@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Micro Blog World | @oneuptim</title>
+    {% load staticfiles %} <!-- ALWAYS REMEMBER THIS LINE OF CODE -->
+    <link rel="stylesheet" href="{% static "blogs/css/styles.css" %}">
+    <script src="https://use.typekit.net/iii7xtz.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="all_blogs">
+        <h1>My Micro Blog</h1>
+        {% for blog in blogs %}
+          <h3>{{ blog.title }}</h3>
+          <p>{{ blog.blog }}</p>
+          <h6>{{ created_at.blog }}</h6>
+        {% endfor %}
+      </div>
+      <div class="new_blog">
+        <form class="" action="/blogs" method="post">
+          {% csrf_token %}
+          <input type="text" name="title" value="" placeholder="Enter intersting title here">
+          <textarea name="blog" placeholder="Your content goes here..."></textarea>
+          <input type="submit" name="" value="Post Blog">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
